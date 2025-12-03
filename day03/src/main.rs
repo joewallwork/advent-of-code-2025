@@ -1,12 +1,16 @@
+use std::env;
 use std::fs;
 use substring::Substring;
 
 fn main() {
     // Load the input file
-    // TODO: Handle both cases with a command line argument
-    let file_path = String::from("test.dat");
-    // let file_path = String::from("input.dat");
-    println!("Reading input file '{file_path}'");
+    let args: Vec<String> = env::args().collect();
+    let file_path = if args.len() > 1 {
+        args[1].clone()
+    } else {
+        String::from("input.dat")
+    };
+    println!("Reading input file '{}'", file_path);
     let contents = fs::read_to_string(file_path).expect("Failed to read input file");
 
     // Define solution variables as mutable integers
