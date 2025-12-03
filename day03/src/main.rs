@@ -23,14 +23,12 @@ fn main() {
         match bank {
             "" => {} // Skip any empty strings
             _ => {
-                println!("{}", bank);
-                let mut i = 0;
+                // println!("{}", bank);
                 let length = bank.len();
-                for battery in bank.split("") {
+                for (i, battery) in bank.split("").enumerate() {
                     match battery {
                         "" => {}
                         _ => {
-                            i = i + 1;  // TODO: Neater enumeration
                             for other in bank.substring(i, length).chars() {
                                 // TODO: Neater concatenation
                                 let concat = String::from(battery) + &String::from(other);
